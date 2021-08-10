@@ -52,12 +52,44 @@ Route::group(['prefix'=>'admin'],function (){
         Route::get('xoa/{id}','LoaiTinController@getXoa');
     });
 
-    Route::group(['prefix'=>'tintuc'],function (){
+Route::group(['prefix'=>'tintuc'],function (){
 
-    Route::get('danhsach','TinTucController@getDanhsach');
+Route::get('danhsach','TinTucController@getDanhsach');
 
-    Route::get('sua','TinTucController@getSua');
+Route::get('sua/{id}','TinTucController@getSua');
 
-    Route::get('them','TinTucController@getThem');
+Route::post('sua/{id}','TinTucController@postSua');
+
+Route::get('them','TinTucController@getThem');
+
+Route::post('them','TinTucController@postThem');
+
+Route::get('xoa/{id}','TinTucController@getXoa');
+});
+
+
+Route::group(['prefix'=>'comment'],function (){
+
+    Route::get('xoa/{id}/{idTinTuc}','CommentController@getXoa');
+    });
+
+Route::group(['prefix'=>'slide'],function (){
+
+    Route::get('danhsach','SlideController@getDanhsach');
+
+    Route::get('sua/{id}','SlideController@getSua');
+
+    Route::post('sua/{id}','SlideController@postSua');
+
+    Route::get('them','SlideController@getThem');
+
+    Route::post('them','SlideControllerr@postThem');
+
+    Route::get('xoa/{id}','SlideController@getXoa');
+    });
+
+
+    Route::group(['prefix'=>'ajax'],function(){
+        Route::get('loaitin/{idTheLoai}','AjaxController@getLoaiTin');
     });
 });
